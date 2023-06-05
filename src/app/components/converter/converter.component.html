@@ -1,2 +1,11 @@
-<p>converter works!</p>
-<p>bimin</p>
+<select [(ngModel)]="baseCurrency" (ngModelChange)="convertCurrency()">
+  <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
+</select>
+
+<input type="number" [(ngModel)]="amount" (ngModelChange)="convertCurrency()" />
+
+<select [(ngModel)]="targetCurrency" (ngModelChange)="convertCurrency()">
+  <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
+</select>
+
+<p>{{ convertedAmount }}</p>
