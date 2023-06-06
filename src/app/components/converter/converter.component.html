@@ -1,11 +1,49 @@
-<select [(ngModel)]="baseCurrency" (ngModelChange)="convertCurrency()">
-  <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
-</select>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<input type="number" [(ngModel)]="amount" (ngModelChange)="convertCurrency()" />
+<nav class="navbar navbar-expand-sm navbar-light bg-dark">
+  <div class="container">
+  <a class="navbar-brand text-white" href="#">Currency Converter</a>
+</div>
+</nav>
 
-<select [(ngModel)]="targetCurrency" (ngModelChange)="convertCurrency()">
-  <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
-</select>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title text-center">Currency Converter</h2>
+      <form action="convert.php" method="post">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="fromCountry">From Country:</label>
+            <select class="form-control" id="fromCountry" name="fromCountry" [(ngModel)]="baseCurrency"
+              (ngModelChange)="convertCurrency()">
+              <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="toCountry">To Country:</label>
+            <select class="form-control" id="toCountry" name="toCountry" [(ngModel)]="targetCurrency"
+              (ngModelChange)="convertCurrency()">
+              <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
+            </select>
+          </div>
+        </div>
 
-<p>{{ convertedAmount }}</p>
+        <div class="form-row mb-5">
+          <div class="form-group col-md-6">
+            <label for="amount">Amount:</label>
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount"
+              [(ngModel)]="amount" (ngModelChange)="convertCurrency()" />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="convertedRate">Converted Rate:</label>
+            <input type="text" class="form-control" id="convertedAmountInput" value="{{ convertedAmount }}" readonly>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
