@@ -1,32 +1,49 @@
 .card {
-    border: none;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-    background-color: #fff;
-  }
+  border: none;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  background-color: #fff;
+}
 
-  .card-title {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 30px;
-  }
+.card-title {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
 
-  .form-control {
-    border-radius: 8px;
-    color: #555;
-    background-color: #f8f9fa;
-  }
+.form-group label {
+  font-weight: 500;
+}
 
-  .form-control:focus {
-    border-color: #80bdff;
-    box-shadow: none;
-  }
+.form-control {
+  border-radius: 8px;
+  color: #555;
+  background-color: #f8f9fa;
+}
 
-  .btn-primary {
-    background-color: #007bff;
-    border: none;
-  }
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: none;
+}
 
-  .btn-primary:hover {
-    background-color: #0069d9;
-  }
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.exchange-rates {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.exchange-rate-item {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
