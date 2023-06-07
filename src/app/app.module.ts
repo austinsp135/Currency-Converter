@@ -7,7 +7,7 @@ import { ConverterComponent } from './components/converter/converter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
