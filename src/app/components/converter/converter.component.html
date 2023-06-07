@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col" *ngIf="baseCurrency">
+    <div class="col-6" *ngIf="baseCurrency">
       <p class="mt-4">Exchange Rates:</p>
       <ul class="list-group exchange-rates">
         <li *ngFor="let currency of currencies; let i = index" [hidden]="baseCurrency === currency.value"
@@ -59,7 +59,7 @@
         </li>
       </ul>
     </div>
-    <div class="col" *ngIf="targetCurrency">
+    <div class="col-6" *ngIf="targetCurrency">
       <p class="mt-4">Exchange Rates:</p>
       <ul class="list-group exchange-rates">
         <li *ngFor="let currency of currencies; let i = index" [hidden]="targetCurrency === currency.value"
