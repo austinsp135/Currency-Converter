@@ -4,6 +4,7 @@
   </div>
 </nav>
 
+<div class="full-page">
 <div class="container">
   <div class="card">
     <div class="card-body">
@@ -35,15 +36,6 @@
               <input type="number" class="form-control mt-1" id="amount" name="amount" placeholder="Enter amount"
                 [(ngModel)]="amount" />
             </div>
-            <ng-container *ngIf="baseCurrency">
-              <p class="mt-4">Exchange Rates:</p>
-              <ul class="list-group exchange-rates">
-                <li *ngFor="let currency of currencies; let i = index" [hidden]="baseCurrency === currency.value"
-                  class="list-group-item exchange-rate-item">
-                  1 {{ baseCurrency }} = {{ conversionRates[baseCurrency][currency.value] }} {{ currency.value }}
-                </li>
-              </ul>
-            </ng-container>
           </div>
           <div class="col-md-6 mt-3">
             <div class="form-group">
@@ -52,18 +44,29 @@
                 [value]="(amount | converter:baseCurrency:targetCurrency:conversionRates) | currency:targetCurrency" readonly
                 placeholder="Converted rate">
             </div>
-            <ng-container *ngIf="targetCurrency">
-              <p class="mt-4">Exchange Rates:</p>
-              <ul class="list-group exchange-rates">
-                <li *ngFor="let currency of currencies; let i = index" [hidden]="targetCurrency === currency.value"
-                  class="list-group-item exchange-rate-item">
-                  1 {{ targetCurrency }} = {{ conversionRates[targetCurrency][currency.value] }} {{ currency.value }}
-                </li>
-              </ul>
-            </ng-container>
           </div>
         </div>
       </form>
     </div>
   </div>
+  <div class="row">
+    <div class="col" *ngIf="baseCurrency">
+      <p class="mt-4">Exchange Rates:</p>
+      <ul class="list-group exchange-rates">
+        <li *ngFor="let currency of currencies; let i = index" [hidden]="baseCurrency === currency.value"
+          class="list-group-item exchange-rate-item">
+          1 {{ baseCurrency }} = {{ conversionRates[baseCurrency][currency.value] }} {{ currency.value }}
+        </li>
+      </ul>
+    </div>
+    <div class="col" *ngIf="targetCurrency">
+      <p class="mt-4">Exchange Rates:</p>
+      <ul class="list-group exchange-rates">
+        <li *ngFor="let currency of currencies; let i = index" [hidden]="targetCurrency === currency.value"
+          class="list-group-item exchange-rate-item">
+          1 {{ targetCurrency }} = {{ conversionRates[targetCurrency][currency.value] }} {{ currency.value }}
+        </li>
+      </ul>
+    </div>
+</div>
 </div>
