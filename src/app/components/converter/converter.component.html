@@ -13,8 +13,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="form-label" for="fromCountry">From Country:</label>
-              <select class="form-select mt-1" id="fromCountry" name="fromCountry" [(ngModel)]="baseCurrency"
-                (ngModelChange)="convertCurrency()">
+              <select class="form-select mt-1" id="fromCountry" name="fromCountry" [(ngModel)]="baseCurrency">
                 <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
               </select>
             </div>
@@ -22,8 +21,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="form-label" for="toCountry">To Country:</label>
-              <select class="form-select mt-1" id="toCountry" name="toCountry" [(ngModel)]="targetCurrency"
-                (ngModelChange)="convertCurrency()">
+              <select class="form-select mt-1" id="toCountry" name="toCountry" [(ngModel)]="targetCurrency">
                 <option *ngFor="let currency of currencies" [value]="currency.value">{{ currency.label }}</option>
               </select>
             </div>
@@ -35,7 +33,7 @@
             <div class="form-group">
               <label class="form-label" for="amount">Amount:</label>
               <input type="number" class="form-control mt-1" id="amount" name="amount" placeholder="Enter amount"
-                [(ngModel)]="amount" (ngModelChange)="convertCurrency()"/>
+                [(ngModel)]="amount" />
             </div>
             <ng-container *ngIf="baseCurrency">
               <p class="mt-4">Exchange Rates:</p>
@@ -51,7 +49,8 @@
             <div class="form-group">
               <label class="form-label" for="convertedRate">Converted Rate:</label>
               <input type="text" class="form-control mt-1" id="convertedAmountInput"
-                value="{{ convertedAmount | currency:targetCurrency }}" readonly placeholder="Converted rate">
+                [value]="(amount | converter:baseCurrency:targetCurrency:conversionRates) | currency:targetCurrency" readonly
+                placeholder="Converted rate">
             </div>
             <ng-container *ngIf="targetCurrency">
               <p class="mt-4">Exchange Rates:</p>

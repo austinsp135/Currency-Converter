@@ -2,6 +2,7 @@ import { Component, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-converter',
@@ -9,12 +10,13 @@ import { CurrencyPipe } from '@angular/common';
   imports: [
     CommonModule,
     FormsModule,
-    CurrencyPipe
+    CurrencyPipe,
+    SharedModule
   ],
   templateUrl: './converter.component.html',
   styleUrls: ['./converter.component.scss']
 })
-export class ConverterComponent implements OnChanges {
+export class ConverterComponent {
 
   baseCurrency!: string;
   targetCurrency!: string;
@@ -61,21 +63,4 @@ export class ConverterComponent implements OnChanges {
       INR: 58.12
     }
   };
-
-  ngOnChanges() {
-    this.convertCurrency();
-  }
-
-  convertCurrency() {
-    if (this.baseCurrency && this.targetCurrency && this.amount) {
-      if (this.baseCurrency === this.targetCurrency) {
-        this.convertedAmount = this.amount; // Set converted amount to the input amount
-      } else {
-        this.rate = this.conversionRates[this.baseCurrency][this.targetCurrency];
-        this.convertedAmount = this.amount * this.rate;
-      }
-    } else {
-      this.convertedAmount = 0;
-    }
-  }
 }
